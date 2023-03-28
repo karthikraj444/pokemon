@@ -13,3 +13,5 @@ numpy
 matplotlib
 dvc
 jupyter lab
+argparse
+scikit-learn
