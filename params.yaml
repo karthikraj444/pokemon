@@ -1,0 +1,40 @@
+base:
+  project: mlops-pokemon
+  random_state: 42
+  target_col: is_legendary
+
+data_source:
+  s3_source: source_code/pokemon.csv
+
+load_data:
+  raw_dataset_csv: data/raw/pokemon_course5i.csv
+
+split_data:
+  train_path: data/processed/train_pokemon_course5i.csv
+  test_path: data/processed/test_pokemon_course5i.csv
+  test_size: 0.2
+
+estimators:
+   LogisticRegression:
+    params:
+      tol: 0.0001
+      C: 1.0
+      max_iter: 100
+ 
+
+
+
+model_dir: models
+
+reports :
+  params: reports/params.json
+  scores: reports/scores.json
+
+webapp_model_dir: prediction_service/model/model.joblib
+
+#mlflow_config:
+  #artifacts_dir: artifacts
+  #experiment_name: ElasticNet_Expense
+  #run_name: mlops
+  #registered_model_name: ElasticNetMedicalExpenses
+  #remote_server_uri: http://127.0.0.1:5000
